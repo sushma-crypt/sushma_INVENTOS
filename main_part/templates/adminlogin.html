@@ -1,0 +1,176 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en"><!-- Basic -->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">  
+	
+	
+   
+	<!-- Mobile Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+	 <!-- Site Metas -->
+	<title>INVENTOS</title>  
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- Site Icons -->
+	<link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}" type="image/x-icon">
+	<link rel="apple-touch-icon" href="{% static 'assets/images/apple-touch-icon.png' %}">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">    
+	<!-- Site CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">    
+	<!-- Responsive CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+
+<body>
+<!-- Start header -->
+<header class="top-navbar">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container">
+			<a class="navbar-brand" href="{% url 'adminlogin' %}">
+				<img src="{% static 'assets/images/logo2.jpg' %}"alt="HTML5 Icon"
+				
+				style="width: 20px;height: 20px;">
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+			  <span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbars-rs-food">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active"><a class="nav-link" href="{% url 'index' %}">HOME</a></li>
+					<li class="nav-item"><a class="nav-link" href="{% url 'category' %}">CATEGORY</a></li>
+					<li class="nav-item"><a class="nav-link" href="{% url 'about' %}">ABOUT</a></li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">PRODECTS</a>
+						<div class="dropdown-menu" aria-labelledby="dropdown-a">
+							<a class="dropdown-item" href="{% url 'orders' %}">orders</a>
+							<a class="dropdown-item" href="{% url 'bestselling' %}">Best selling</a>
+							<a class="dropdown-item" href="{% url 'gallery' %}">Gallery</a>
+							
+
+						</div>
+					</li>
+					
+					<li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">CONTACT</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</header>
+<!-- End header -->
+
+
+                
+
+                <link rel="stylesheet" href="{% static 'assets/css/login.css' %}">
+            <div class="login-wrap">
+              <div class="login-html">
+
+			{% for i in messages %} 
+            {% if "reg" in i.tags %}
+          <div class="alert alert-success" role="alert">
+            {{i}}
+          </div>
+          {% endif %}
+          {% endfor %}
+
+          {% for j in messages %}
+		  {% if "login" in j.tags %}
+          <div class="alert alert-warning" role="alert">
+            {{j}}
+          </div>
+		  {% endif %}
+          {% endfor %}
+	  
+			  <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+			  <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+			  <div class="login-form">
+			<!--login form start-->
+			<form action='/adminlogin' method="POST">
+			      {% csrf_token %}
+	  
+				  <div class="sign-in-htm">
+					  <div class="group">
+						  <label for="user" class="label">Username</label>
+						  <input id="user" type="text" class="input" name="user_name" required>
+					  </div>
+					  <div class="group">
+						  <label for="pass" class="label">Password</label>
+						  <input id="pass" type="password" class="input" data-type="password" name="password" required>
+					  </div>
+					  <div class="group">
+						  <input id="check" type="checkbox" class="check" checked>
+						  <label for="check"><span class="icon"></span> Keep me Signed in</label>
+					  </div>
+					  <div class="group">
+						  <input type="submit" class="button" value="Sign In">
+					  </form>
+						  
+					  </div>
+					  <div class="hr"></div>
+					  <div class="foot-lnk">
+						  <label for="tab-2">Create an account</a>	
+					  </div>
+					  <a href="{% url 'index' %}">back</a>
+				  </div>
+		  </form>
+		  <!--login form end-->
+	  
+						<!--registration form start-->
+						<form action="/admin_reg" method="POST">
+						  {% csrf_token %} 
+					 
+				
+	  
+	  
+	  
+				  <div class="sign-up-htm">
+					  <div class="group">
+						  <label for="user" class="label">Username</label>
+						  <input id="user" type="text" class="input" name="user_name" required>
+					  </div>
+					  <div class="group">
+						  <label for="pass" class="label">Password</label>
+						  <input id="pass" type="password" class="input" data-type="password" name="password" required>
+					  </div>
+					  <div class="group">
+						  <label for="pass" class="label">Repeat Password</label>
+						  <input id="pass" type="password" class="input" data-type="password" name="repeat_password" required>
+					  </div>
+					  <div class="group">
+						  <label for="pass" class="label">Email Address</label>
+						  <input id="pass" type="email" class="input" name="email_id" required>
+					  </div>
+					  <div class="group">
+						  <input type="submit" class="button" value="Sign Up">
+					  </div>
+					  <div class="hr"></div>
+					  <div class="foot-lnk">
+						  <a><label for="tab-1">Already have an account?</a>
+					  </div>
+			</form>
+			<!--registration form end-->
+				  </div>
+	 		  </div>
+		  </div>
+	  </div>         
+			    
+		       
+	
+		
+
+
